@@ -26,7 +26,7 @@ Please refer to the LICENSE in the repo.
 ![Alt text](./assets/images/main-screen.png?raw=true "Optional Title")
 
 - Updating task and showing it is also updated in LocalStorage
-![Alt text](./assets/images/updated-local-storage.png?raw=true "Optional Title")
+![Alt text](./assets/images/udpated-local-storage.png?raw=true "Optional Title")
 
 - Showing Past, Present, and future times for current day.
 ![Alt text](./assets/images/showing-past-pres-time.png?raw=true "Optional Title")
