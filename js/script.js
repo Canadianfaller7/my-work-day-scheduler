@@ -1,8 +1,6 @@
-// Earliest time the page displays (in military time)
-const workTime = 8;
-
-// Latest time the page displays (in military time)
-const endTime = 18;
+// military time
+const startDay = 8;
+const endDay = 18;
 
 
 let saveData = [];
@@ -21,60 +19,69 @@ if(storageData){
 }
 
 // Create page elements
-for (let i = workTime; i < endTime; i++){
+for (let i = startDay; i < endDay; i++){
     // making a row to then store our time and save button to
     let row = $("<div>").addClass("row time-block").attr("id", i);
 
     // gets current date from luxon api
-    let currentDate = luxon.DateTime.now().toLocaleString(luxon.DateTime.DATE_HUGE);
+    let todaysDate = luxon.DateTime.now().toLocaleString(luxon.DateTime.DATE_HUGE);
     
     // shows the current day and year
-    $("#currentDay").text(currentDate);
+    $("#currentDay").text(todaysDate);
 
     // gives us what hour it currently is
-    let currentHour = luxon.DateTime.fromObject({hour: i}).toLocaleString(luxon.DateTime.TIME_SIMPLE);
+    let currenthour = luxon.DateTime.fromObject({hour: i}).toLocaleString(luxon.DateTime.TIME_SIMPLE);
 
-    // shows hours
-    let hour = $("<div>").addClass("hour col-1").text(currentHour);
-
+    let hours = $("<div>").addClass("hour col-1").text(currenthour);
+    
     let input = $("<textarea>").addClass("description col-10 past").attr("id", "input").attr("data-id", i).val(saveData[i]);
 
     let saveButton = $("<button>").addClass("btn saveBtn col-1").html('<i class="fas fa-save"></i>').attr("data-id", i);
 
-    row.append(hour, input, saveButton);
+    // appending our hours, input, and saveButton on the screen inside our container class in html
+    row.append(hours, input, saveButton);
     $(".container").append(row);
 }
 
-// Changes the colors of the textareas depending on if theyre in the present or future
-function setCurrentHour(){
-    let currentHour = luxon.DateTime.now().hour;
+/* Changes the colors of the textareas
+ depending on if they are in the present 
+ or future */
+const setCurrenthour = () => {
+    let currenthour = luxon.DateTime.now().hour;
     
-    let currTextAreaEl = $("#" + currentHour).children("textarea");
+    let currTextAreaEl = $("#" + currenthour).children("textarea");
     currTextAreaEl.removeClass("past").addClass("present");
 
-    for(let i = currentHour + 1; i < endTime; i++){
-        let row = $("#" + i);
+    for(let i = currenthour + 1; i < endDay; i++){
+        let row = $(`#${i}`);
         row.children("textarea").removeClass("past").addClass("future");
     }
 }
 
 // When the save button is clicked, it saves the related textbox value
-function saveInput(saveId){
-    let saveString = $("textarea[data-id='" + saveId + "']").val();
+const saveInput = saveId => {
+    let saveString = $(`textarea[data-id="${saveId}"]`).val();
 
     saveData[saveId] = saveString;
     localStorage.setItem("hourlyTasks", JSON.stringify(saveData));
 }
 
-// When textarea loses focus, save the data if save button was clicked. Otherwise revert the changes made
+/* save the data if save button was clicked.
+Otherwise revert the changes made */
 $("textarea").on("blur", function(event){
     let textAreaId = $(this).attr("data-id");
 
     console.log(event.relatedTarget);
 
     if(event.relatedTarget){
-        if(event.relatedTarget.dataset.id === $("button[data-id='" + textAreaId + "']").attr("data-id")){
+        let savedText = $("#storage-updated")
+        if(event.relatedTarget.dataset.id === $(`button[data-id="${textAreaId}"]`).attr("data-id")){
+            // display message and then hide after 12second
             saveInput(textAreaId);
+            savedText.html("Task has been updated in LocalStorage " + `<i class="fas fa-check-double"></i>`).addClass("text-center").show();
+            setTimeout(() => {
+                savedText.hide()
+            }, 2000);
         } else {
             $(this).val(saveData[textAreaId]);
         }   
@@ -83,4 +90,4 @@ $("textarea").on("blur", function(event){
     }
 });
 
-setCurrentHour();
+setCurrenthour();

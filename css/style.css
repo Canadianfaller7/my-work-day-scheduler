@@ -2,29 +2,38 @@
   --black: black;
   --dark-grey: #373737;
   --off-white-blue: rgb(232, 252, 255);
+  --off-blue: rgb(138, 239, 255);
+
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  background-color: var(--off-white-blue);
 }
 
 textarea {
   background: transparent;
   border: none;
   resize: none;
-  color: #000000;
+  color: var(--black);
   border-left: 1px solid var(--black);
   padding: 10px;
 }
 
 .jumbotron {
   text-align: center;
-  background-color: transparent;
-  color: black;
+  background-color: var(--dark-grey);
+  color: var(--off-white-blue);
   border-radius: 0;
   border-bottom: 10px solid var(--black);
+}
+
+#currentDay {
+  margin-top: 50px;
+  font-size: 35px;
+  font-weight: 700;
 }
 
 .description {
@@ -39,31 +48,42 @@ textarea {
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;
+  border-top: 1px solid var(--dark-grey);
 }
 
 .hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
+  background-color: var(--off-blue);
+  color: var(--black);
+  font-size: 20px;
+  font-weight: 600;
+  border-top: 2px dashed var(--black);
+  padding-top: 15px;
 }
 
+/* showing past hours from the day */
 .past {
   background-color: #d3d3d3;
   color: var(--black);
   font-size: 25px;
+  font-weight: 600;
 }
 
+/* show if you are in that current time hour */
 .present {
-  background-color: #ff544b;
+  background-color: #fa7972;
   color: var(--black);
+  font-size: 25px;
+  font-weight: 600;
 }
 
+/* used to show if time hasn't passed */
 .future {
-  background-color: #68e268;
+  background-color: #A5FF70;
   color: var(--black);
+  font-size: 25px;
+  font-weight: 600;
 }
-
+/* adding some style to the save button and color */
 .saveBtn {
   border-left: 1px solid var(--black);
   border-top-right-radius: 15px;
@@ -72,7 +92,7 @@ textarea {
   color: var(--off-white-blue);
 }
 
-/*  */
+/* this makes it so the save icon grows when hovered over */
 .saveBtn i:hover {
   font-size: 30px;
   transition: all 0.3s ease-in-out;
