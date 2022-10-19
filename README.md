@@ -31,5 +31,5 @@ Please refer to the LICENSE in the repo.
 - Showing Past, Present, and future times for current day.
 ![Alt text](./assets/images/showing-past-pres-time.png?raw=true "Optional Title")
 
-- Clearing Storage
+- Clearing Storage; open up inspector tools by 'right clicking' and selecting 'inspect'. You will then navigate to the 'Application' section in the nav bar, Click on 'Local Storage', then the site name and right click again, and click 'clear'.
 ![Alt text](./assets/images/clear-storage.png?raw=true "Optional Title")
