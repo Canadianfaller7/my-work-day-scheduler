@@ -6,7 +6,7 @@ const endDay = 18;
 let saveData = [];
 /* looping through 24 hours of a day and then
 pushing blank quotes into the array fields inside localStorage until filled out by user */
-for(let i = startDay; i < endDay + 1; i++){
+for(let i = 0; i < 25; i++){
     saveData.push("");
     
 }
