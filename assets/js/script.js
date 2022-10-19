@@ -60,9 +60,9 @@ const setCurrenthour = () => {
 
 // When the save button is clicked, it saves the related textbox value
 const saveInput = saveId => {
-    let saveString = $(`textarea[data-id="${saveId}"]`).val();
+    let saveTask = $(`textarea[data-id="${saveId}"]`).val();
 
-    saveData[saveId] = saveString;
+    saveData[saveId] = saveTask;
     localStorage.setItem("hourlyTasks", JSON.stringify(saveData));
 }
 
@@ -70,14 +70,16 @@ const saveInput = saveId => {
 Otherwise revert the changes made */
 $("textarea").on("blur", function(event){
     let textAreaId = $(this).attr("data-id");
-
+    
     console.log(event.relatedTarget);
-
+    
     if(event.relatedTarget){
-        let savedText = $("#storage-updated")
         if(event.relatedTarget.dataset.id === $(`button[data-id="${textAreaId}"]`).attr("data-id")){
-            // display message and then hide after 12second
+            let savedText = $("#storage-updated")
+
             saveInput(textAreaId);
+            
+            // display message and then hide after 2second
             savedText.html("Task has been updated in LocalStorage " + `<i class="fas fa-check-double"></i>`).addClass("text-center").show();
             setTimeout(() => {
                 savedText.hide()
@@ -88,6 +90,7 @@ $("textarea").on("blur", function(event){
     } else {
         $(this).val(saveData[textAreaId]);
     }
+    
 });
 
 setCurrenthour();
