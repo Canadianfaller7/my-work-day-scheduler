@@ -15,7 +15,7 @@ N/A
 * [My Workday Scheduler](https://canadianfaller7.github.io/my-work-day-scheduler/ "Named link title")
 
 ## Credits
-- https://moment.github.io/luxon/api-docs/index.html Fo
+- https://moment.github.io/luxon/api-docs/index.html For getting time and date.
 
 ## License
 Please refer to the LICENSE in the repo.
