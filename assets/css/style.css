@@ -3,10 +3,12 @@
   --dark-grey: #373737;
   --off-white-blue: rgb(232, 252, 255);
   --off-blue: rgb(138, 239, 255);
-
+  
 }
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
@@ -30,14 +32,31 @@ textarea {
   border-bottom: 10px solid var(--black);
 }
 
-#currentDay {
-  margin-top: 50px;
-  font-size: 35px;
+.display-3 {
+  font-size: 50px;
   font-weight: 700;
 }
 
-.description {
+.lead {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#currentDay {
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.container {
+  padding: 0;
+}
+
+.row {
   white-space: pre-wrap;
+  margin: 20px 10px;
+  height: 80px;
+  border-top: 1px solid var(--dark-grey);
 }
 
 .time-block {
@@ -45,26 +64,28 @@ textarea {
   border-radius: 15px;
 }
 
-.row {
-  white-space: pre-wrap;
+.hour, .saveBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 80px;
-  border-top: 1px solid var(--dark-grey);
+  background-color: var(--off-blue);
+  color: var(--black);
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .hour {
-  background-color: var(--off-blue);
-  color: var(--black);
-  font-size: 20px;
-  font-weight: 600;
-  border-top: 2px dashed var(--black);
-  padding-top: 15px;
+  border-left: 1px solid var(--black);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 /* showing past hours from the day */
 .past {
   background-color: #d3d3d3;
   color: var(--black);
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -72,7 +93,7 @@ textarea {
 .present {
   background-color: #fa7972;
   color: var(--black);
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -80,12 +101,13 @@ textarea {
 .future {
   background-color: #A5FF70;
   color: var(--black);
-  font-size: 25px;
+  font-size: 16px;
   font-weight: 600;
 }
 /* adding some style to the save button and color */
 .saveBtn {
   border-left: 1px solid var(--black);
+  border-right: 1px solid var(--black);
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #27c2e6;
@@ -93,7 +115,7 @@ textarea {
 }
 
 /* this makes it so the save icon grows when hovered over */
-.saveBtn i:hover {
+/* .saveBtn i:hover {
   font-size: 30px;
   transition: all 0.3s ease-in-out;
-}
+} */

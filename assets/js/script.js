@@ -32,11 +32,11 @@ for (let i = startDay; i < endDay; i++){
     // gives us what hour it currently is
     let currenthour = luxon.DateTime.fromObject({hour: i}).toLocaleString(luxon.DateTime.TIME_SIMPLE);
 
-    let hours = $("<div>").addClass("hour col-1").text(currenthour);
+    let hours = $("<div>").addClass("hour col-2").text(currenthour);
     
-    let input = $("<textarea>").addClass("description col-10 past").attr("id", "input").attr("data-id", i).val(saveData[i]);
+    let input = $("<textarea>").addClass("description col-8 past").attr("id", "input").attr("data-id", i).val(saveData[i]);
 
-    let saveButton = $("<button>").addClass("btn saveBtn col-1").html('<i class="fas fa-save"></i>').attr("data-id", i);
+    let saveButton = $("<button>").addClass("btn saveBtn col-2").html('<i class="fas fa-save"></i>').attr("data-id", i);
 
     // appending our hours, input, and saveButton on the screen inside our container class in html
     row.append(hours, input, saveButton);
