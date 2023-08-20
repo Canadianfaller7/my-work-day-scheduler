@@ -115,7 +115,7 @@ textarea {
 }
 
 /* this makes it so the save icon grows when hovered over */
-/* .saveBtn i:hover {
+.saveBtn i:hover {
   font-size: 30px;
   transition: all 0.3s ease-in-out;
-} */
+}
