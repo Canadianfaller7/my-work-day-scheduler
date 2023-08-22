@@ -48,6 +48,11 @@ textarea {
   font-weight: 600;
 }
 
+.description {
+  white-space: pre-wrap;
+}
+
+
 .container {
   padding: 0;
 }

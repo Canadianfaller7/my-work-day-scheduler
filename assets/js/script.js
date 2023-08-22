@@ -69,13 +69,14 @@ const saveInput = saveId => {
 
 /* save the data if save button was clicked.
 Otherwise revert the changes made */
-$("textarea").on("blur", function(event){
+$("textarea").on("blur", function (event) {
+    event.preventDefault();
     let textAreaId = $(this).attr("data-id");
     
-    console.log(event.relatedTarget);
+    console.log(`event.relatedTarget: ${event.relatedTarget}`);
     
-    if(event.relatedTarget){
-        if(event.relatedTarget.dataset.id === $(`button[data-id="${textAreaId}"]`).attr("data-id")){
+    if(event.target){
+        if(event.target.dataset.id === $(`button[data-id="${textAreaId}"]`).attr("data-id")){
             let savedText = $("#storage-updated")
 
             saveInput(textAreaId);
